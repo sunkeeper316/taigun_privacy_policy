@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <script>
+        // 獲取瀏覽器語言代碼
+        let userLang = navigator.language || navigator.userLanguage;
+
+        console.log("Detected Language:", userLang);
+
+        // 根據語言代碼設置對應語言
+        if (userLang.includes('TW') || userLang.includes('Hant')) {
+            // 如果語言代碼包含 'TW' 或 'Hant'，則使用繁體中文
+            userLang = 'zh-TW';
+        } else if (userLang.includes('CN') || userLang.includes('Hans')) {
+            // 如果語言代碼包含 'CN' 或 'Hans'，則使用簡體中文
+            userLang = 'zh-CN';
+        } else {
+            // 默認語言設置為英文
+            userLang = 'en';
+        }
+
+        // 測試輸出選定語言
+        console.log("Selected Language:", userLang);
+
+        // 跳轉對應的隱私政策頁面
+        const langMap = {
+            'zh-TW': 'privacy_policy_zh_tw.html', // 繁體中文
+            'zh-CN': 'privacy_policy_zh_cn.html', // 簡體中文
+            'en': 'privacy_policy_en.html'        // 英文
+        };
+
+        // 找到對應頁面，默認跳轉英文頁面
+        const redirectPage = langMap[userLang] || langMap['en'];
+        window.location.href = redirectPage;
+
+    </script>
+</head>
+
+<body>
+    <p>Redirecting to the appropriate privacy policy page...</p>
+</body>
+
+</html>
